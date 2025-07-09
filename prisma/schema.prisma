@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id         String   @id @default(uuid())
+  nome       String
+  email      String   @unique
+  senhaHash  String
+  criadoEm   DateTime @default(now())
+}
+
+model Aluno {
+  id         String   @id @default(uuid())
+  nome       String
+  matricula  String   @unique
+  turma      String
+  curso      String
+  email      String
+  emprestimos Emprestimo[]
+  criadoEm   DateTime @default(now())
+}
+
+model Livro {
+  id         String   @id @default(uuid())
+  titulo     String
+  autor      String
+  genero     String
+  isbn       String
+  quantidade Int
+  emprestimos Emprestimo[]
+  criadoEm   DateTime @default(now())
+}
+
+model Emprestimo {
+  id                    String   @id @default(uuid())
+  alunoId               String
+  livroId               String
+  dataEmprestimo        DateTime @default(now())
+  dataDevolucaoPrevista DateTime
+  dataDevolucaoReal     DateTime?
+  status                StatusEmprestimo
+
+  aluno                 Aluno    @relation(fields: [alunoId], references: [id])
+  livro                 Livro    @relation(fields: [livroId], references: [id])
+}
+
+enum StatusEmprestimo {
+  EMPRESTADO
+  DEVOLVIDO
+  ATRASADO
+}

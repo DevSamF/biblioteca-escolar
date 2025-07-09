@@ -1,0 +1,35 @@
+{
+  "name": "biblioteca-escolar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevSamF/biblioteca-escolar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevSamF/biblioteca-escolar/issues"
+  },
+  "homepage": "https://github.com/DevSamF/biblioteca-escolar#readme",
+  "dependencies": {
+    "@fastify/jwt": "^9.1.0",
+    "@prisma/client": "^6.11.1",
+    "bcryptjs": "^3.0.2",
+    "fastify": "^5.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.11.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.3"
+  }
+}
